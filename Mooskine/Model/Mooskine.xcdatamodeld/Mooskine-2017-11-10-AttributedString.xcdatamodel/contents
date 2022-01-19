@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H1519" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Meme" representedClassName="Meme" syncable="YES" codeGenerationType="class">
+        <attribute name="bottom" optional="YES" attributeType="String"/>
+        <attribute name="edited" optional="YES" attributeType="Binary"/>
+        <attribute name="ori" optional="YES" attributeType="Binary"/>
+        <attribute name="top" optional="YES" attributeType="String"/>
+        <relationship name="places" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="memes" inverseEntity="Place"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+        <attribute name="attributedText" optional="YES" attributeType="Transformable" customClassName="NSAttributedString"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="notebook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notebook" inverseName="notes" inverseEntity="Notebook"/>
+    </entity>
+    <entity name="Notebook" representedClassName="Notebook" syncable="YES" codeGenerationType="class">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Note" inverseName="notebook" inverseEntity="Note"/>
+        <relationship name="places" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="notebooks" inverseEntity="Place"/>
+    </entity>
+    <entity name="Place" representedClassName="Place" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="memes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Meme" inverseName="places" inverseEntity="Meme"/>
+        <relationship name="notebooks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Notebook" inverseName="places" inverseEntity="Notebook"/>
+    </entity>
+    <elements>
+        <element name="Note" positionX="-54" positionY="-9" width="128" height="90"/>
+        <element name="Notebook" positionX="-220.01953125" positionY="32.625" width="128" height="103"/>
+        <element name="Place" positionX="-175.74609375" positionY="173.2890625" width="128" height="118"/>
+        <element name="Meme" positionX="73.55859375" positionY="117" width="128" height="118"/>
+    </elements>
+</model>
